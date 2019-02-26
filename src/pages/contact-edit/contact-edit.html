@@ -1,0 +1,69 @@
+<!--
+  Generated template for the ContactEditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label color="secondary" stacked>Nome</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+      <div [hidden]="!form.controls.name.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+ 
+    <ion-list *ngIf="peladaModalidade == 'Futsal'" radio-group [formControl]="form.controls['posicao']"> 
+      <ion-list-header color="secondary">Posição</ion-list-header>
+      <ion-item>
+        <ion-label>Pivô</ion-label>
+        <ion-radio color="secondary" value="Pivô"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ala</ion-label>
+        <ion-radio color="secondary" value="Ala"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fixo</ion-label>
+        <ion-radio color="secondary" value="Fixo"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Goleiro</ion-label>
+        <ion-radio color="secondary" value="Goleiro"></ion-radio>
+      </ion-item> 
+    </ion-list>
+  
+  
+      <ion-list *ngIf="peladaModalidade == 'Futebol'"radio-group [formControl]="form.controls['posicao']"> 
+        <ion-list-header color="secondary">Posição</ion-list-header>
+        <ion-item>
+          <ion-label>Atacante</ion-label>
+          <ion-radio color="secondary" value="Atacante"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Meio-campista</ion-label>
+          <ion-radio color="secondary" value="Meia"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Zagueiro</ion-label>
+          <ion-radio color="secondary" value="Zagueiro"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Goleiro</ion-label>
+          <ion-radio color="secondary" value="Goleiro"></ion-radio>
+        </ion-item> 
+      </ion-list>
+    <div padding>
+      <button ion-button block type="submit" color="secondary" [disabled]="!form.valid" (click)="onSubmit()">Adicionar jogador</button>
+    </div>
+  </form>
+</ion-content>

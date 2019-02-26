@@ -1,0 +1,55 @@
+
+<ion-header>
+    <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Placar</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+
+<ion-content padding>
+      <div class="placarresponsivo">
+        <div class="box">   
+            <label for="qty"><span class="timeA" color="primary" title="Quantity">Time A</span></label>
+            <input class="placar1"  id="qty" value="0" />
+            <button ion-button outline  color="primary" id="down" (click)="modify_qty(-1)"><b>-</b></button>
+            <button ion-button outline  color="primary" id="up" (click)="modify_qty(1)"><b>+</b></button>
+        </div>
+        <div class="box">    
+            <label for="qty"><span class="timeB" color="danger" title="Quantity">Time B</span></label>
+            <input class="placar2" id="qty1" value="0" />
+            <button ion-button outline  color="danger" id="down" (click)="modify_qty1(-1)"><b>-</b></button>
+            <button ion-button outline  color="danger" id="up" (click)="modify_qty1(1)"><b>+</b></button>
+        </div>
+    </div>
+    <ion-grid>
+      <ion-row justify-content-center justify-content-around id="body">
+        <ion-col col-3>
+            <p>{{hora}}</p> 
+        </ion-col>
+        <p>:</p>
+        <ion-col col-3>
+            <p>{{minuto}}</p> 
+        </ion-col>
+        <p>:</p>
+        <ion-col col-3>
+            <p>{{segundo}}</p> 
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center justify-content-around>
+          <ion-col col-3>
+            <p *ngFor="let conta of contaLoop | slice:0:5">{{conta.hora}}:{{conta.minuto}}:{{conta.segundo}}</p>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-row justify-content-center justify-content-around>
+      <button ion-button color="secondary" (click)="comeca()">Começar</button>
+      <button ion-button color="danger" (click)="parar()">Parar</button>
+      <button ion-button (click)="zerar()">Zerar</button> 
+    </ion-row>
+</ion-content>
+
+

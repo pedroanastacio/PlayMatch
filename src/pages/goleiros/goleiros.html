@@ -1,0 +1,61 @@
+
+<ion-header>
+
+    <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      <ion-title>Goleiros</ion-title>
+    </ion-navbar>
+    
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-list radio-group [(ngModel)]="modalidade">
+      <ion-list-header color="secondary">Modalidade</ion-list-header>
+      <ion-item>
+        <ion-label>Futebol</ion-label>
+        <ion-radio color="secondary" value="Futebol"></ion-radio>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Futsal</ion-label>
+        <ion-radio color="secondary" value="Futsal"></ion-radio>
+      </ion-item> 
+     
+  </ion-list>
+
+  <form [formGroup]="searchForm">
+  <ion-segment color="secondary" *ngIf="modalidade == 'Futebol'" [formControl]="searchForm.controls['searchTerm']">
+      <ion-segment-button value="Goleiro Futebol" type="submit" (click)="buscarGolFutebol()">Goleiro</ion-segment-button>
+      <ion-segment-button value="Zagueiro" type="submit" (click)="buscarZag()">Zagueiro</ion-segment-button>
+      <ion-segment-button value="Meia" type="submit" (click)="buscarMeia()">Meia</ion-segment-button>
+      <ion-segment-button value="Atacante" type="submit" (click)="buscarAta()">Atacante</ion-segment-button>
+</ion-segment>  
+
+<ion-segment color="secondary" *ngIf="modalidade == 'Futsal'" [formControl]="searchForm.controls['searchTerm']">
+    <ion-segment-button value="Goleiro Futsal" type="submit" (click)="buscarGolFutsal()">Goleiro</ion-segment-button>
+    <ion-segment-button value="Fixo" type="submit" (click)="buscarFixo()">Fixo</ion-segment-button>
+    <ion-segment-button value="Ala" type="submit" (click)="buscarAla()">Ala</ion-segment-button>
+    <ion-segment-button value="Pivô" type="submit" (click)="buscarPivo()">Pivô</ion-segment-button>
+</ion-segment>  
+</form>
+
+
+
+    <ion-list *ngFor="let userperfil of userperfils | async">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="assets/icon/user.png"> 
+          </ion-thumbnail>
+          <h2>{{userperfil.username}}</h2>
+                  
+          <p><img *ngIf="userperfil.redeSocial == 'WhatsApp'" src="assets/icon/icon_Wpp.png"> {{userperfil.userWpp}}</p>
+          <p><img *ngIf="userperfil.redeSocial == 'Facebook'" src="assets/icon/icon_fb.png"> {{userperfil.userFb}}</p>
+          <p><img *ngIf="userperfil.redeSocial == 'Instagram'" src="assets/icon/icon_Insta.png"> {{userperfil.userInsta}}</p>
+          <p ><img *ngIf="userperfil.redeSocial == 'Twitter'" src="assets/icon/icon_Tt.png"> {{userperfil.userTt}}</p>
+        </ion-item>
+      </ion-list>
+
+</ion-content>

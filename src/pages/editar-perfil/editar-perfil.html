@@ -1,0 +1,123 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked color="secondary">Nome</ion-label>
+      <ion-input type="text" placeholder="Insira o nome" formControlName="username"></ion-input>
+    </ion-item>
+        
+    <ion-list radio-group [formControl]="form.controls['modalidade']" [(ngModel)]="modalidade">
+        <ion-list-header color="secondary">Modalidade</ion-list-header>
+        <ion-item>
+          <ion-label>Futebol</ion-label>
+          <ion-radio color="secondary" value="Futebol"></ion-radio>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Futsal</ion-label>
+          <ion-radio color="secondary" value="Futsal"></ion-radio>
+        </ion-item>
+        
+    </ion-list>  
+    
+  <ion-list *ngIf="modalidade == 'Futsal'" radio-group [formControl]="form.controls['posicao']"> 
+    <ion-list-header color="secondary">Posição</ion-list-header>
+    <ion-item>
+      <ion-label>Pivô</ion-label>
+      <ion-radio color="secondary" value="Pivô"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ala</ion-label>
+      <ion-radio color="secondary" value="Ala"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fixo</ion-label>
+      <ion-radio color="secondary" value="Fixo"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Goleiro</ion-label>
+      <ion-radio color="secondary" value="Goleiro Futsal"></ion-radio>
+    </ion-item> 
+  </ion-list>
+
+
+    <ion-list *ngIf="modalidade == 'Futebol'"radio-group [formControl]="form.controls['posicao']"> 
+      <ion-list-header color="secondary">Posição</ion-list-header>
+      <ion-item>
+        <ion-label>Atacante</ion-label>
+        <ion-radio color="secondary" value="Atacante"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Meio-campista</ion-label>
+        <ion-radio color="secondary" value="Meia"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Zagueiro</ion-label>
+        <ion-radio color="secondary" value="Zagueiro"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Goleiro</ion-label>
+        <ion-radio color="secondary" value="Goleiro Futebol"></ion-radio> 
+      </ion-item> 
+    </ion-list>
+
+    <ion-list radio-group [formControl]="form.controls['redeSocial']" [(ngModel)]="contato">
+      <ion-list-header color="secondary">Contato</ion-list-header>
+      <ion-item>
+        <ion-label>WhatsApp</ion-label>
+        <ion-radio color="secondary" value="WhatsApp"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Facebook</ion-label>
+        <ion-radio color="secondary" value="Facebook"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Instagram</ion-label>
+        <ion-radio color="secondary" value="Instagram"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Twitter</ion-label>
+        <ion-radio color="secondary" value="Twitter"></ion-radio>
+      </ion-item> 
+    </ion-list>
+
+    <ion-item *ngIf="contato == 'WhatsApp'" >
+      <ion-label stacked color="secondary">WhatsApp</ion-label>
+      <ion-input type="text" placeholder="Insira seu WhatsApp" formControlName="userWpp"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="contato == 'Facebook'">
+    <ion-label stacked color="secondary">Facebook</ion-label>
+    <ion-input placeholder="Insira seu Facebook" type="text" formControlName="userFb"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="contato == 'Instagram'">
+      <ion-label stacked color="secondary">Instagram</ion-label>
+    <ion-input placeholder = "Insira seu Instagram" type="text" formControlName="userInsta"></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="contato == 'Twitter'">
+    <ion-label stacked color="secondary">Twitter</ion-label>
+  <ion-input placeholder = "Insira seu Twitter" type="text" formControlName="userTt"></ion-input>
+</ion-item>
+
+
+<div padding> 
+  <button ion-button block color="secondary" type="submit" [disabled]="!form.valid" (click)="editarPerfil()">Salvar</button>
+</div>
+
+
+   </form> 
+</ion-content>

@@ -1,0 +1,29 @@
+<!--
+  Generated template for the AddRoomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="secondary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>Adicionar Sala de Bate papo</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form (ngSubmit)="addRoom()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>{{peladaName}}</ion-label>
+          <ion-input type="text" [(ngModel)]="peladaName" name="roomname" required="" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button full round color="secondary" type="submit">Criar Chat</button>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>

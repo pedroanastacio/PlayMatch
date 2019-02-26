@@ -1,0 +1,26 @@
+
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        <ion-title>Nickname</ion-title>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form (ngSubmit)="enterNickname()">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>{{nickname}}</ion-label>
+            <ion-input  type="text" [(ngModel)]="nickname" name="nickname" required=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <button ion-button block color="secondary" type="submit">Salvar</button>
+          </ion-item>
+        </ion-list>
+      </form>
+</ion-content>
