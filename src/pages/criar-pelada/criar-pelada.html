@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked color="secondary">Nome da pelada</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+      <div [hidden]="!form.controls.name.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-list radio-group [formControl]="form.controls['modalidade']">
+      <ion-list-header color="secondary">Modalidade</ion-list-header>
+      <ion-item>
+        <ion-label>Futebol</ion-label>
+        <ion-radio color="secondary" value="Futebol"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Futsal</ion-label>
+        <ion-radio color="secondary" value="Futsal"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group [formControl]="form.controls['cidade']">
+      <ion-list-header color="secondary">Cidade</ion-list-header>
+      <ion-item>
+        <ion-label>Patos de Minas</ion-label>
+        <ion-radio color="secondary" value="Patos de Minas"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>Local</ion-label>
+      <ion-input type="text" formControlName="local"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>N° de jogadores</ion-label>
+      <ion-input type="number" formControlName="numJogador"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>Data</ion-label>
+      <ion-input type="date" formControlName="dataPelada"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>Horário</ion-label>
+      <ion-input type="time" formControlName="horaPelada"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="secondary" stacked>Preço por jogador</ion-label>
+      <ion-input type="number" formControlName="precoJogador"></ion-input>
+    </ion-item>
+
+    
+    <div padding>
+      <button ion-button block color="secondary" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Criar Pelada</button>
+    </div>
+
+  
+  </form>
+</ion-content>

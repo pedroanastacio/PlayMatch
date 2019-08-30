@@ -1,0 +1,110 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Buscar Pelada</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+  <ion-list radio-group [(ngModel)]="filtro">
+      <ion-list-header color="secondary">Tipo de filtro</ion-list-header>
+      <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-radio color="secondary" value="nome"></ion-radio>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-radio color="secondary" value="data"></ion-radio>
+      </ion-item> 
+
+      <ion-item>
+        <ion-label>Preço</ion-label>
+        <ion-radio color="secondary" value="preço"></ion-radio> 
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Modalidade</ion-label>
+        <ion-radio color="secondary" value="modalidade"></ion-radio>
+      </ion-item>
+  </ion-list>
+
+  <form [formGroup]="searchForm">         
+      <ion-item *ngIf="filtro == 'data'" >
+          <ion-label color="secondary" stacked>Busca por data </ion-label>
+          <ion-input type="date" formControlName="searchTerm"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="filtro == 'nome'">
+        <ion-label color="secondary" stacked>Busca por nome</ion-label>
+        <ion-input placeholder="Insira o nome" type="text" formControlName="searchTerm"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="filtro == 'preço'">
+          <ion-label color="secondary" stacked>Busca por preço</ion-label>
+        <ion-input placeholder = "Insira o preço" type="number" formControlName="searchTerm"></ion-input>
+      </ion-item>
+
+
+      <ion-segment color="secondary" *ngIf="filtro == 'modalidade'" [formControl]="searchForm.controls['searchTerm']">
+            <ion-segment-button value="Futebol" type="submit" (click)="buscarModalidade()">Futebol</ion-segment-button>
+          
+            <ion-segment-button value="Futsal" type="submit" (click)="buscarModalidade()">Futsal</ion-segment-button>
+      </ion-segment>    
+
+      <div padding *ngIf="filtro == 'data'">
+        <button ion-button block color="secondary" type="submit" (click)="buscarData()" outline><ion-icon name="search"></ion-icon>Buscar</button>
+      </div>
+
+      <div padding *ngIf="filtro == 'nome'">
+        <button ion-button block color="secondary" type="submit" (click)="buscarNome()" outline><ion-icon name="search"></ion-icon>Buscar</button>
+      </div>
+
+      <div padding *ngIf="filtro == 'preço'">
+        <button ion-button block color="secondary" type="submit" (click)="buscarPreco()" outline><ion-icon name="search"></ion-icon>Buscar</button>
+      </div>
+
+          
+  </form>
+
+  
+  <ion-list>
+      <ion-item-sliding *ngFor="let pelada of peladas | async">
+        <ion-item>
+        <ion-thumbnail item-start *ngIf="pelada.modalidade == 'Futebol'">
+          <img src="assets/icon/icon_futebol.png">
+        </ion-thumbnail>  
+        <ion-thumbnail item-start *ngIf="pelada.modalidade == 'Futsal'">
+          <img src="assets/icon/icon_futsal.jpg">  
+        </ion-thumbnail>  
+        <h2><b>{{ pelada.name }}</b></h2>
+        <p>{{ pelada.local }}</p>
+        <p>{{ pelada.dataPelada | date:"dd/MM/yy"}} {{pelada.horaPelada}}</p>
+        <p>{{ pelada.precoJogador | currency:'BRL':true}}</p>
+        <button ion-button clear item-end color="secondary" (click)="jogadores(pelada.key, pelada.modalidade)">Jogadores</button>
+      </ion-item>
+        <ion-item-options side="left">  
+            <button ion-button color="dark" (click)="editarPelada(pelada)">
+             <ion-icon name="create"></ion-icon>
+           </button> 
+             <button ion-button color="danger" (click)="removerPelada(pelada.key)"> 
+               <ion-icon name="trash"></ion-icon>
+             </button>
+             
+           </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    
+
+      
+
+      
+    
+
+</ion-content>

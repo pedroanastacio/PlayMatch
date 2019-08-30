@@ -1,0 +1,51 @@
+
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+  <ion-fab top right>
+    <button ion-button color="light" clear icon-only (click)="editPerfil()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+  </ion-fab>
+</ion-header>
+
+ 
+<ion-content padding>
+ <div class="photoPerfil"><img  src="assets/icon/user.png"></div>
+ <BR>
+ <ion-list *ngFor="let userperfil of userperfils | async">
+  
+  <div class="nomeUser">
+    <h1>{{ userperfil.username }}</h1>
+  </div>
+  
+<BR>
+<BR>  
+    <ion-list-header color="secondary"><b>Modalidade</b></ion-list-header>
+    <p>{{ userperfil.modalidade }}</p>
+  <BR> 
+   
+  <ion-list-header color="secondary"><b>Posição</b></ion-list-header>
+  <p>{{ userperfil.posicao }}</p>
+<BR>
+ 
+  <ion-list-header color="secondary"><b>Contato</b
+    ></ion-list-header>
+  <p><img *ngIf="userperfil.redeSocial == 'WhatsApp'" src="assets/icon/icon_Wpp.png"> {{userperfil.userWpp}}</p>
+  <p><img *ngIf="userperfil.redeSocial == 'Facebook'" src="assets/icon/icon_fb.png"> {{userperfil.userFb}}</p>
+  <p><img *ngIf="userperfil.redeSocial == 'Instagram'" src="assets/icon/icon_Insta.png"> {{userperfil.userInsta}}</p>
+  <p ><img *ngIf="userperfil.redeSocial == 'Twitter'" src="assets/icon/icon_Tt.png"> {{userperfil.userTt}}</p>
+
+  <ion-fab bottom right>
+      <button *ngIf="userperfil.username" ion-fab color="secondary" (click)="criarNick(userperfil.username)">
+        <ion-icon name="chatboxes"></ion-icon>
+      </button>
+    </ion-fab> 
+ </ion-list>
+
+</ion-content>
