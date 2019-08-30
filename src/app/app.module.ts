@@ -45,7 +45,11 @@ import { UsuariosProvider } from '../providers/usuarios/usuarios';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp({
+<<<<<<< HEAD
       apiKey: "*****************************",
+=======
+      apiKey: "AIzaSyAu_wlreCOpr9lQnuIIvZlvJMffz3Ba3tg",
+>>>>>>> 703f45162555d956d6d01bd3f4ffb719ac9efcbf
     authDomain: "playmatch-95ce0.firebaseapp.com",
     databaseURL: "https://playmatch-95ce0.firebaseio.com",
     projectId: "playmatch-95ce0",

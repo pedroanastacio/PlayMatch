@@ -48,7 +48,11 @@
     "zone.js": "0.8.20"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@ionic/app-scripts": "^3.2.4",
+=======
+    "@ionic/app-scripts": "^3.1.8",
+>>>>>>> 703f45162555d956d6d01bd3f4ffb719ac9efcbf
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",
@@ -69,4 +73,8 @@
       "ios"
     ]
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 703f45162555d956d6d01bd3f4ffb719ac9efcbf
